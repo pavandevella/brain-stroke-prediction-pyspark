@@ -20,8 +20,15 @@ class ModelTrainer:
         model = RandomForestClassifier(random_state=42)
         model.fit(X_train, y_train)
 
+        predictions = model.predict(X_test)
+
+        print("\n=== Actual vs Predicted ===")
+
+        for actual, pred in zip(y_test, predictions):
+            print(f"Actual: {actual} | Predicted: {pred}")
+
         accuracy = model.score(X_test, y_test)
 
-        print(f"Model Accuracy: {accuracy:.2f}")
+        print(f"\nModel Accuracy: {accuracy:.2f}")
 
         return model
